@@ -4,12 +4,16 @@ import ProgressBar from "@ramonak/react-progress-bar";
 
 const Card = ({data}) => {
 
+    /**
+     * Since we are not using any
+     * API to fetch Owner Info,
+     * I have hardcoded this data
+     */
     const owners ={
         1: "Rajesh",
         2: "Suresh",
         3: "Ranjini",
     }
-
 
     return (
         <div className="w-full bg-white rounded-lg shadow-lg hover:shadow-xl p-4 transition-all duration-300">

@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function useDataFetch(pageNumber, owner_id) {
+export default function useDataFetch(pageNumber) {
+    /**
+     * This hook returns 4 states,
+     * those have been declared below
+     */
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [data, setData] = useState([])
@@ -11,10 +15,17 @@ export default function useDataFetch(pageNumber, owner_id) {
         setLoading(true)
         setError(false)
         let cancel
+
+        /**
+         * Using axios to fetch the data.
+         * Since there is no other API,
+         * I have hardcoded the uri here
+         */
+
         axios({
             method: 'GET',
             url: `https://yummy-confused-harrier.glitch.me/cards`,
-            params: { page: pageNumber, owner_id: owner_id },
+            params: { page: pageNumber },
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setData(prevdata => {
